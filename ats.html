@@ -3,57 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimalist Page</title>
+    <title>ATS - RemoteHQ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link data-n-head="ssr" type="font/woff2" rel="preload" href="https://www.upwork.com/static/fonts-global/4.5.1/neue-montreal-variable.woff2" as="font" crossorigin="anonymous">
-
-    <script>
-        function toggleAccordion(id) {
-            const content = document.getElementById(`content-${id}`);
-            const icon = document.getElementById(`icon-${id}`);
-            const isHidden = content.classList.contains("hidden");
-
-            content.classList.toggle("hidden", !isHidden);
-            icon.classList.toggle("rotate-180", isHidden);
-
-            // Update aria-expanded
-            const button = document.getElementById(`button-${id}`);
-            button.setAttribute("aria-expanded", isHidden ? "true" : "false");
+    <style>
+        .tab-active {
+            font-weight: bold;
+            border-bottom: 2px solid #3b82f6;
         }
-
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        function togglePopup(id) {
-            const popup = document.getElementById(`popup-${id}`);
-            popup.classList.toggle('hidden');
-        }
-
-        document.addEventListener('click', (event) => {
-            const notifications = document.getElementById('popup-notifications');
-            const accountInfo = document.getElementById('popup-account-info');
-
-            if (!event.target.closest('#notifications-icon')) {
-                notifications.classList.add('hidden');
-            }
-
-            if (!event.target.closest('#account-info-icon')) {
-                accountInfo.classList.add('hidden');
-            }
-        });
-    </script>
+    </style>
 </head>
-<body class="bg-white-100">
-    <!-- Top Menu Bar -->
+<body class="bg-white">
+    <!-- Header -->
     <header class="bg-white sticky top-0 z-10 shadow-sm">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center">
-              <!-- Mobile Menu Icon -->
-              <button class="md:hidden p-2 text-gray-600 focus:outline-none" aria-label="Open Menu" onclick="toggleMenu()">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                <!-- Mobile Menu Icon -->
+                <button class="md:hidden p-2 text-gray-600 focus:outline-none" aria-label="Open Menu" onclick="toggleMenu()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
                 </button>
                 <!-- Logo -->
@@ -115,15 +83,97 @@
     </header>
 
     <!-- Main Content -->
-    <div class="container mx-auto px-4 py-6 flex gap-6 flex-row-reverse">
-      <!---Hero job section with Job title and job description -->
+    <div class="container mx-auto px-4 py-6">
+        <!-- Hero Job Section -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+            <h1 class="text-2xl font-bold mb-2">Job Title: Frontend Developer</h1>
+            <p class="text-gray-700">We are looking for a skilled frontend developer to join our team. The ideal candidate will have experience with React and Tailwind CSS.</p>
+        </div>
 
-      <!--- A bar with tabs All(8) Invited(Y) Shortlisted(x) Hired(M) Archived(Z)-->
+        <!-- Tabs Bar - Updated for mobile responsiveness -->
+        <div class="overflow-x-auto -mx-4 px-4 mb-6">
+            <div class="flex space-x-6 min-w-max">
+                <span class="cursor-pointer py-2 text-sm md:text-base tab-active whitespace-nowrap">
+                    All (8)
+                </span>
+                <span class="cursor-pointer py-2 text-sm md:text-base text-gray-600 hover:text-gray-900 whitespace-nowrap">
+                    Invited (3)
+                </span>
+                <span class="cursor-pointer py-2 text-sm md:text-base text-gray-600 hover:text-gray-900 whitespace-nowrap">
+                    Shortlisted (2)
+                </span>
+                <span class="cursor-pointer py-2 text-sm md:text-base text-gray-600 hover:text-gray-900 whitespace-nowrap">
+                    Hired (1)
+                </span>
+                <span class="cursor-pointer py-2 text-sm md:text-base text-gray-600 hover:text-gray-900 whitespace-nowrap">
+                    Archived (0)
+                </span>
+            </div>
+        </div>
 
-      <!---Search bar with filter icon-->
+        <!-- Search Bar with Funnel Filter Icon -->
+        <div class="flex items-center mb-6">
+            <input type="text" placeholder="Search applicants..." class="flex-1 border border-gray-300 rounded-lg px-4 py-2">
+            <button class="ml-2 p-2 text-gray-600 hover:text-gray-900">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                </svg>
+            </button>
+        </div>
 
-    <!---- User cards-->
+        <!-- Updated User Card -->
+        <div class="space-y-4">
+            <!-- Example User Card -->
+            <div class="bg-white p-6 rounded-lg shadow-md relative">
+                <!-- Hire Button -->
+                <button class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-1 rounded-full text-sm hover:bg-blue-600 transition-colors">
+                    Hire
+                </button>
+
+                <div class="flex items-start">
+                    <!-- Left side: Image and basic info -->
+                    <div class="flex-shrink-0">
+                        <img src="https://via.placeholder.com/100" alt="User Image" class="w-16 h-16 rounded-full">
+                    </div>
+
+                    <!-- Right side: User details -->
+                    <div class="ml-4 flex-grow">
+                        <div class="flex flex-col">
+                            <h2 class="text-lg font-bold">John Doe</h2>
+                            <p class="text-md text-gray-700">Frontend Developer</p>
+                            <p class="text-sm text-gray-500">New York, United States</p>
+                            <div class="mt-1">
+                                <span class="text-md font-semibold text-gray-900">$45/hr</span>
+                                <span class="text-sm text-gray-500 ml-2">| Earned $100k+</span>
+                            </div>
+                        </div>
+
+                        <!-- Proposal/Description -->
+                        <div class="mt-4">
+                            <p class="text-gray-700 line-clamp-3">
+                                I am a passionate frontend developer with 5+ years of experience in React and modern web technologies. 
+                                I have successfully delivered multiple projects similar to your requirements. My expertise includes:
+                                - Building responsive web applications
+                                - Implementing complex UI/UX designs
+                                - Optimizing application performance
+                                I would love to contribute to your project and help achieve your goals.
+                            </p>
+                        </div>
+
+                        <!-- Skills -->
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">TypeScript</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Tailwind CSS</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Next.js</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Redux</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more user cards as needed -->
+        </div>
     </div>
-    <script src="theme.js"></script>
 </body>
 </html>
