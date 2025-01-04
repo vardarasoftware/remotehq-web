@@ -19,7 +19,7 @@
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center">
                 <!-- Mobile Menu Icon -->
-                <button class="md:hidden p-2 text-gray-600 focus:outline-none" aria-label="Open Menu" onclick="toggleMenu()">
+                <button class="md:hidden p-2 text-gray-600 focus:outline-none" aria-label="Open Menu" data-mobile-menu>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
@@ -48,7 +48,7 @@
                 </div>
                 <!-- Notifications -->
                 <div class="relative" id="notifications-icon">
-                    <button class="p-2 rounded-full focus:outline focus:outline-gray-400" aria-label="Notifications" title="Notifications" onclick="togglePopup('notifications')">
+                    <button class="p-2 rounded-full focus:outline focus:outline-gray-400" aria-label="Notifications" title="Notifications" data-popup="notifications">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-gray-600">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0a3 3 0 11-6 0m6 0H9" />
                         </svg>
@@ -121,59 +121,260 @@
             </button>
         </div>
 
-        <!-- Updated User Card -->
+        <!-- User Cards -->
         <div class="space-y-4">
-            <!-- Example User Card -->
+            <!-- User Card 1 -->
             <div class="bg-white p-6 rounded-lg shadow-md relative">
-                <!-- Hire Button -->
-                <button class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-1 rounded-full text-sm hover:bg-blue-600 transition-colors">
+                <!-- Hire Button - Desktop -->
+                <button class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
                     Hire
                 </button>
 
-                <div class="flex items-start">
-                    <!-- Left side: Image and basic info -->
-                    <div class="flex-shrink-0">
-                        <img src="https://via.placeholder.com/100" alt="User Image" class="w-16 h-16 rounded-full">
-                    </div>
-
-                    <!-- Right side: User details -->
-                    <div class="ml-4 flex-grow">
-                        <div class="flex flex-col">
-                            <h2 class="text-lg font-bold">John Doe</h2>
-                            <p class="text-md text-gray-700">Frontend Developer</p>
-                            <p class="text-sm text-gray-500">New York, United States</p>
-                            <div class="mt-1">
-                                <span class="text-md font-semibold text-gray-900">$45/hr</span>
-                                <span class="text-sm text-gray-500 ml-2">| Earned $100k+</span>
-                            </div>
-                        </div>
-
-                        <!-- Proposal/Description -->
-                        <div class="mt-4">
-                            <p class="text-gray-700 line-clamp-3">
-                                I am a passionate frontend developer with 5+ years of experience in React and modern web technologies. 
-                                I have successfully delivered multiple projects similar to your requirements. My expertise includes:
-                                - Building responsive web applications
-                                - Implementing complex UI/UX designs
-                                - Optimizing application performance
-                                I would love to contribute to your project and help achieve your goals.
-                            </p>
-                        </div>
-
-                        <!-- Skills -->
-                        <div class="mt-4 flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">React</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">TypeScript</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Tailwind CSS</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Next.js</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Redux</span>
+                <!-- User Info Section -->
+                <div class="flex items-start gap-4">
+                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Riley" alt="Riley" class="w-16 h-16 rounded-full flex-shrink-0">
+                    <div class="flex-grow">
+                        <h2 class="text-lg font-bold">Riley Anderson</h2>
+                        <p class="text-md text-gray-700">Senior Frontend Developer</p>
+                        <p class="text-sm text-gray-500">San Francisco, USA</p>
+                        <div class="mt-1">
+                            <span class="text-md font-semibold text-gray-900">$65/hr</span>
+                            <span class="text-sm text-gray-500 ml-2">| Earned $150k+</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- Proposal/Description -->
+                <div class="mt-4">
+                    <p class="text-gray-700 md:line-clamp-3 proposal-text">
+                        <span class="collapsed">
+                            Senior Frontend Developer with 7+ years of experience in React ecosystem. Specialized in building scalable web applications.
+                        </span>
+                        <span class="expanded hidden">
+                            Senior Frontend Developer with 7+ years of experience in React ecosystem. Specialized in building scalable web applications.
+                            Key achievements:
+                            - Led frontend development for 3 major SaaS products
+                            - Improved application performance by 40%
+                            - Implemented modern CI/CD practices
+                        </span>
+                    </p>
+                    <button data-proposal-toggle class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
+                        See More
+                    </button>
+                </div>
+
+                <!-- Skills -->
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">React</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">TypeScript</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Next.js</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">GraphQL</span>
+                </div>
+
+                <!-- Hire Button - Mobile -->
+                <button class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                    Hire
+                </button>
             </div>
 
-            <!-- Add more user cards as needed -->
+            <!-- User Card 2 (Leah - UI/UX) -->
+            <div class="bg-white p-6 rounded-lg shadow-md relative">
+                <button class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                    Hire
+                </button>
+
+                <div class="flex items-start gap-4">
+                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Leah" alt="Leah" class="w-16 h-16 rounded-full flex-shrink-0">
+                    <div class="flex-grow">
+                        <h2 class="text-lg font-bold">Leah Mitchell</h2>
+                        <p class="text-md text-gray-700">UI/UX Designer</p>
+                        <p class="text-sm text-gray-500">London, UK</p>
+                        <div class="mt-1">
+                            <span class="text-md font-semibold text-gray-900">$55/hr</span>
+                            <span class="text-sm text-gray-500 ml-2">| Earned $80k+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <p class="text-gray-700 md:line-clamp-3 proposal-text">
+                        <span class="collapsed">
+                            Creative UI/UX Designer with a passion for crafting intuitive and engaging user experiences. Strong background in user research and prototyping.
+                        </span>
+                        <span class="expanded hidden">
+                            Creative UI/UX Designer with a passion for crafting intuitive and engaging user experiences. Strong background in user research and prototyping.
+                            Recent achievements:
+                            - Redesigned e-commerce platform increasing conversion by 35%
+                            - Led design system implementation for major fintech app
+                            - Conducted user research resulting in 40% better engagement
+                        </span>
+                    </p>
+                    <button data-proposal-toggle class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
+                        See More
+                    </button>
+                </div>
+
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Figma</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">User Research</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Prototyping</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Design Systems</span>
+                </div>
+
+                <button class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                    Hire
+                </button>
+            </div>
+
+            <!-- User Card 3 (Sarah - Backend Developer) -->
+            <div class="bg-white p-6 rounded-lg shadow-md relative">
+                <button class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                    Hire
+                </button>
+
+                <div class="flex items-start gap-4">
+                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Sarah" alt="Sarah" class="w-16 h-16 rounded-full flex-shrink-0">
+                    <div class="flex-grow">
+                        <h2 class="text-lg font-bold">Sarah Chen</h2>
+                        <p class="text-md text-gray-700">Backend Developer</p>
+                        <p class="text-sm text-gray-500">Toronto, Canada</p>
+                        <div class="mt-1">
+                            <span class="text-md font-semibold text-gray-900">$70/hr</span>
+                            <span class="text-sm text-gray-500 ml-2">| Earned $200k+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <p class="text-gray-700 md:line-clamp-3 proposal-text">
+                        <span class="collapsed">
+                            Backend Developer specializing in scalable microservices and cloud architecture. Expert in building high-performance APIs and distributed systems.
+                        </span>
+                        <span class="expanded hidden">
+                            Backend Developer specializing in scalable microservices and cloud architecture. Expert in building high-performance APIs and distributed systems.
+                            Key highlights:
+                            - Architected microservices handling 1M+ daily requests
+                            - Reduced server costs by 45% through optimization
+                            - Implemented automated CI/CD pipelines for 20+ services
+                        </span>
+                    </p>
+                    <button data-proposal-toggle class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
+                        See More
+                    </button>
+                </div>
+
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Node.js</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Python</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">AWS</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">MongoDB</span>
+                </div>
+
+                <button class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                    Hire
+                </button>
+            </div>
+
+            <!-- User Card 4 (Sophia - Full Stack Developer) -->
+            <div class="bg-white p-6 rounded-lg shadow-md relative">
+                <button class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                    Hire
+                </button>
+
+                <div class="flex items-start gap-4">
+                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Sophia" alt="Sophia" class="w-16 h-16 rounded-full flex-shrink-0">
+                    <div class="flex-grow">
+                        <h2 class="text-lg font-bold">Sophia Rodriguez</h2>
+                        <p class="text-md text-gray-700">Full Stack Developer</p>
+                        <p class="text-sm text-gray-500">Berlin, Germany</p>
+                        <div class="mt-1">
+                            <span class="text-md font-semibold text-gray-900">$60/hr</span>
+                            <span class="text-sm text-gray-500 ml-2">| Earned $120k+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <p class="text-gray-700 md:line-clamp-3 proposal-text">
+                        <span class="collapsed">
+                            Versatile Full Stack Developer with expertise in modern web technologies. Experienced in building complete web applications from concept to deployment.
+                        </span>
+                        <span class="expanded hidden">
+                            Versatile Full Stack Developer with expertise in modern web technologies. Experienced in building complete web applications from concept to deployment.
+                            Recent projects:
+                            - Built and launched an e-learning platform with 50k+ users
+                            - Developed real-time collaboration tools using WebSocket
+                            - Created mobile-first responsive applications
+                        </span>
+                    </p>
+                    <button data-proposal-toggle class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
+                        See More
+                    </button>
+                </div>
+
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">React</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Node.js</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">PostgreSQL</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Docker</span>
+                </div>
+
+                <button class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                    Hire
+                </button>
+            </div>
+
+            <!-- User Card 5 (Emery - DevOps Engineer) -->
+            <div class="bg-white p-6 rounded-lg shadow-md relative">
+                <button class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                    Hire
+                </button>
+
+                <div class="flex items-start gap-4">
+                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Emery" alt="Emery" class="w-16 h-16 rounded-full flex-shrink-0">
+                    <div class="flex-grow">
+                        <h2 class="text-lg font-bold">Emery Taylor</h2>
+                        <p class="text-md text-gray-700">DevOps Engineer</p>
+                        <p class="text-sm text-gray-500">Sydney, Australia</p>
+                        <div class="mt-1">
+                            <span class="text-md font-semibold text-gray-900">$75/hr</span>
+                            <span class="text-sm text-gray-500 ml-2">| Earned $180k+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <p class="text-gray-700 md:line-clamp-3 proposal-text">
+                        <span class="collapsed">
+                            DevOps Engineer focused on automation and infrastructure optimization. Expert in cloud services and containerization technologies.
+                        </span>
+                        <span class="expanded hidden">
+                            DevOps Engineer focused on automation and infrastructure optimization. Expert in cloud services and containerization technologies.
+                            Major achievements:
+                            - Reduced deployment time by 70% using automated pipelines
+                            - Implemented zero-downtime deployment strategy
+                            - Set up multi-region infrastructure for global applications
+                        </span>
+                    </p>
+                    <button data-proposal-toggle class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
+                        See More
+                    </button>
+                </div>
+
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Kubernetes</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">AWS</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Terraform</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">CI/CD</span>
+                </div>
+
+                <button class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                    Hire
+                </button>
+            </div>
         </div>
     </div>
+
+    <script type="module" src="ats.js"></script>
 </body>
 </html>
