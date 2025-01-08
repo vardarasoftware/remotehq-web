@@ -1,6 +1,7 @@
 // Wrap the entire script in a self-invoking function to create a global scope
 (function() {
-    // Utility Functions
+    // Utility Funct
+    
     function toggleAccordion(id) {
         const content = document.getElementById(`content-${id}`);
         const icon = document.getElementById(`icon-${id}`);
@@ -24,22 +25,20 @@
         popup.classList.toggle('hidden');
     }
 
-    window.toggleAccordion = toggleAccordion;
-    window.toggleMenu = toggleMenu;
-    window.togglePopup = togglePopup;
-
-    // document.addEventListener('click', (event) => {
-    //     const notifications = document.getElementById('popup-notifications');
-    //     const accountInfo = document.getElementById('popup-account-info');
-
-    //     if (!event.target.closest('#notifications-icon')) {
-    //         notifications.classList.add('hidden');
-    //     }
-
-    //     if (!event.target.closest('#account-info-icon')) {
-    //         accountInfo.classList.add('hidden');
-    //     }
     
+
+    document.addEventListener('click', (event) => {
+        const notifications = document.getElementById('popup-notifications');
+        const accountInfo = document.getElementById('popup-account-info');
+
+        if (!event.target.closest('#notifications-icon')) {
+            notifications.classList.add('hidden');
+        }
+
+        if (!event.target.closest('#account-info-icon')) {
+            accountInfo.classList.add('hidden');
+        }
+    });
 
     function toggleJobDrawer(id) {
         const drawer = document.getElementById(`job-drawer-${id}`);
@@ -56,6 +55,11 @@
             document.removeEventListener('keydown', handleEscapeKey);
         }
     }
+
+    window.toggleAccordion = toggleAccordion;
+    window.toggleMenu = toggleMenu;
+    window.togglePopup = togglePopup;
+    window.toggleJobDrawer = toggleJobDrawer;
 
     function closeJobDrawer(id) {
         const drawer = document.getElementById(`job-drawer-${id}`);
@@ -389,5 +393,5 @@
             handleCardKeyNavigation(event, '[id^="talent-card-"]', '[id^="talent-drawer-"]');
         }
     });
-})();
 
+})();
