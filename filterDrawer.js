@@ -39,12 +39,17 @@ class FilterDrawer {
             }
         });
 
+
+        // Handle close drawer with Escape Key
+        document.addEventListener('keydown', (event) => 
+            this.handleEscapeKey(event));
+
         // Prevent drawer clicks from closing
-        if (this.drawerElement) {
-            this.drawerElement.addEventListener('click', (event) => {
-                event.stopPropagation();
-            });
-        }
+        // if (this.drawerElement) {
+        //     this.drawerElement.addEventListener('click', (event) => {
+        //         event.stopPropagation();
+        //     });
+        // }
 
         // Apply filters button
         if (this.applyButtonElement) {
@@ -53,6 +58,13 @@ class FilterDrawer {
                 this.config.onApply(filters);
                 this.closeDrawer();
             });
+        }
+    }
+
+    // function to Handle close filter drawer with Escape Key
+    handleEscapeKey(event) {
+        if (event.key === 'Escape' && this.isDrawerOpen()) {
+            this.closeDrawer();
         }
     }
 
