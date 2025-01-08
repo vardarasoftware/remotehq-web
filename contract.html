@@ -6,7 +6,6 @@
     <title>Contracts - RemoteHQ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link data-n-head="ssr" type="font/woff2" rel="preload" href="https://www.upwork.com/static/fonts-global/4.5.1/neue-montreal-variable.woff2" as="font" crossorigin="anonymous">
-    <script src="theme.js" defer></script>
     <script type="module">
         import FilterDrawer from './filterDrawer.js';
 
@@ -143,7 +142,7 @@
             <!-- Contracts Grid -->
             <div class="space-y-3">
                 <!-- Contract Card 1 -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
+                <div id="job-card-1" class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
                     <div class="p-4">
                         <!-- First Row: Contract Title and Three Dots -->
                         <div class="flex justify-between items-center mb-2">
@@ -183,7 +182,7 @@
                 </div>
 
                 <!-- Contract Card 2 -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
+                <div id="job-card-2" class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
                     <div class="p-4">
                         <!-- First Row: Contract Title and Three Dots -->
                         <div class="flex justify-between items-center mb-2">
@@ -222,8 +221,8 @@
                     </div>
                 </div>
 
-                <!-- Add more contract cards as needed -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
+               <!-- Contract Card 3 -->
+                <div id="job-card-3" class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <h2 class="text-lg font-semibold text-gray-800">Mobile App Design Project</h2>
@@ -256,7 +255,8 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
+                <!-- Contract Card 4 -->
+                <div id="job-card-4" class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <h2 class="text-lg font-semibold text-gray-800">E-commerce Backend Development</h2>
@@ -289,7 +289,8 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
+                <!-- Contract Card 5 -->
+                <div id="job-card-5" class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <h2 class="text-lg font-semibold text-gray-800">AI Chatbot Integration</h2>
@@ -322,7 +323,8 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
+                <!-- Contract Card 6 -->
+                <div id="job-card-6" class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <h2 class="text-lg font-semibold text-gray-800">Cloud Infrastructure Setup</h2>
@@ -455,5 +457,6 @@
             </div>
         </div>
     </div>
+    <script src="theme.js" ></script>
 </body>
 </html>
