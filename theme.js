@@ -24,6 +24,23 @@
         popup.classList.toggle('hidden');
     }
 
+    window.toggleAccordion = toggleAccordion;
+    window.toggleMenu = toggleMenu;
+    window.togglePopup = togglePopup;
+
+    // document.addEventListener('click', (event) => {
+    //     const notifications = document.getElementById('popup-notifications');
+    //     const accountInfo = document.getElementById('popup-account-info');
+
+    //     if (!event.target.closest('#notifications-icon')) {
+    //         notifications.classList.add('hidden');
+    //     }
+
+    //     if (!event.target.closest('#account-info-icon')) {
+    //         accountInfo.classList.add('hidden');
+    //     }
+    
+
     function toggleJobDrawer(id) {
         const drawer = document.getElementById(`job-drawer-${id}`);
         drawer.classList.toggle('translate-x-full');
@@ -373,3 +390,4 @@
         }
     });
 })();
+
