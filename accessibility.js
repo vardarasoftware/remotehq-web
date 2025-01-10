@@ -1,7 +1,5 @@
 class Accessibility {
   constructor() {
-    this.jobCards = []; // Stores job cards
-    this.currentJobIndex = -1; // Tracks the current focused job card
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.closeDrawer = this.closeDrawer.bind(this);
     this.handleEscapeKey = this.handleEscapeKey.bind(this);
@@ -53,6 +51,7 @@ class Accessibility {
       return;
     }
 
+    // Find current focused card
     const currentCardIndex = this.cards.findIndex(card => card.classList.contains('ring-2'));
 
     switch(event.key) {
@@ -69,6 +68,8 @@ class Accessibility {
       case 'Enter':
         if (currentCardIndex !== -1) {
           const currentCard = this.cards[currentCardIndex];
+
+          // Try different selector patterns for show more button
           const showMoreButton = 
             currentCard.querySelector('[onclick^="toggleDrawer"]') || 
             currentCard.querySelector('[onclick^="toggleJobDrawer"]');
@@ -129,8 +130,10 @@ class Accessibility {
     document.removeEventListener('keydown', this.handleEscapeKey);
   }
 
+  // Separate function to handle Escape key
   handleEscapeKey(event) {
     if (event.key === 'Escape') {
+      // Find the open drawer for both job and talent pages
       const openJobDrawer = document.querySelector('[id^="job-drawer-"]:not(.translate-x-full)');
       const openTalentDrawer = document.querySelector('[id^="talent-drawer-"]:not(.translate-x-full)');
       
@@ -152,8 +155,11 @@ class Accessibility {
       
     drawer.classList.toggle('translate-x-full');
     drawer.classList.toggle('translate-x-0');
+
+    // Prevent body scrolling when drawer is open
     document.body.classList.toggle('overflow-hidden');
   
+     // Add event listener for Escape key
     if (!drawer.classList.contains('translate-x-full')) {
       document.addEventListener('keydown', this.handleEscapeKey);
     } else {
@@ -167,7 +173,11 @@ class Accessibility {
   
     drawer.classList.add('translate-x-full');
     drawer.classList.remove('translate-x-0');
+
+    // Re-enable body scrolling
     document.body.classList.remove('overflow-hidden');
+
+    // Remove Escape key event listener
     document.removeEventListener('keydown', this.handleEscapeKey);
   }
 }
