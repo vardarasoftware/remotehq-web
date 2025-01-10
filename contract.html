@@ -457,6 +457,29 @@
             </div>
         </div>
     </div>
-    <script src="theme.js" ></script>
+    <script type="module">
+        import Accessibility from "./accessibility.js";
+        
+        const accessibility = new Accessibility();
+        
+        document.addEventListener('DOMContentLoaded', () => {
+          console.log('DOM Loaded');
+          
+          // Check for contract cards
+          const contractCards = document.querySelectorAll('[id^="job-card-"]');
+          if (contractCards.length > 0) {
+            console.log('Initializing Contract Card Navigation');
+            accessibility.initializeCardNavigation('[id^="job-card-"]', '[id^="job-drawer-"]');
+          }
+        });
+      
+        document.addEventListener('keydown', (event) => {
+          const contractCards = document.querySelectorAll('[id^="job-card-"]');
+          if (contractCards.length > 0) {
+            accessibility.handleCardKeyNavigation(event, '[id^="job-card-"]', '[id^="job-drawer-"]');
+          }
+        });
+      </script>
+    <!-- <script src="theme.js" ></script> -->
 </body>
 </html>

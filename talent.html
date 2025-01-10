@@ -684,5 +684,31 @@ class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end"
 </div>
 </div>
     <script src="theme.js"></script>
+    <script type="module">
+        import Accessibility from "./accessibility.js";
+  
+        const accessibility = new Accessibility();
+  
+        // Modify existing event listeners to support multiple page types
+        document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOM Loaded');
+        
+        // Check for talent cards
+        const talentCards = document.querySelectorAll('[id^="talent-card-"]');
+        if (talentCards.length > 0) {
+            console.log('Initializing Talent Card Navigation');
+            accessibility.initializeCardNavigation('[id^="talent-card-"]', '[id^="talent-drawer-"]');
+        }
+        });
+
+        document.addEventListener('keydown', (event) => {
+        const talentCards = document.querySelectorAll('[id^="talent-card-"]');
+
+        if (talentCards.length > 0) {
+            accessibility.handleCardKeyNavigation(event, '[id^="talent-card-"]', '[id^="talent-drawer-"]');
+        }
+        });
+      </script>
+      <!---script src="theme.js"></script--->
 </body>
 </html>
