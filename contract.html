@@ -8,6 +8,14 @@
     <link data-n-head="ssr" type="font/woff2" rel="preload" href="https://www.upwork.com/static/fonts-global/4.5.1/neue-montreal-variable.woff2" as="font" crossorigin="anonymous">
     <script src="theme.js" defer></script>
     <script type="module">
+        import Navigation from "./navigation.js";
+        const nav = new Navigation
+        nav.setupEventListeners();
+        
+       
+        
+      </script>
+    <script type="module">
         import FilterDrawer from './filterDrawer.js';
 
         // Optional: Custom filter application function

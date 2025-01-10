@@ -2,64 +2,64 @@
 (function() {
     // Utility Funct
     
-    function toggleAccordion(id) {
-        const content = document.getElementById(`content-${id}`);
-        const icon = document.getElementById(`icon-${id}`);
-        const isHidden = content.classList.contains("hidden");
+    // function toggleAccordion(id) {
+    //     const content = document.getElementById(`content-${id}`);
+    //     const icon = document.getElementById(`icon-${id}`);
+    //     const isHidden = content.classList.contains("hidden");
 
-        content.classList.toggle("hidden", !isHidden);
-        icon.classList.toggle("rotate-180", isHidden);
+    //     content.classList.toggle("hidden", !isHidden);
+    //     icon.classList.toggle("rotate-180", isHidden);
 
-        // Update aria-expanded
-        const button = document.getElementById(`button-${id}`);
-        button.setAttribute("aria-expanded", isHidden ? "true" : "false");
-    }
+    //     // Update aria-expanded
+    //     const button = document.getElementById(`button-${id}`);
+    //     button.setAttribute("aria-expanded", isHidden ? "true" : "false");
+    // }
 
-    function toggleMenu() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-    }
+    // function toggleMenu() {
+    //     const menu = document.getElementById('mobile-menu');
+    //     menu.classList.toggle('hidden');
+    // }
 
-    function togglePopup(id) {
-        const popup = document.getElementById(`popup-${id}`);
-        popup.classList.toggle('hidden');
-    }
+    // function togglePopup(id) {
+    //     const popup = document.getElementById(`popup-${id}`);
+    //     popup.classList.toggle('hidden');
+    // }
 
     
 
-    document.addEventListener('click', (event) => {
-        const notifications = document.getElementById('popup-notifications');
-        const accountInfo = document.getElementById('popup-account-info');
+    // document.addEventListener('click', (event) => {
+    //     const notifications = document.getElementById('popup-notifications');
+    //     const accountInfo = document.getElementById('popup-account-info');
 
-        if (!event.target.closest('#notifications-icon')) {
-            notifications.classList.add('hidden');
-        }
+    //     if (!event.target.closest('#notifications-icon')) {
+    //         notifications.classList.add('hidden');
+    //     }
 
-        if (!event.target.closest('#account-info-icon')) {
-            accountInfo.classList.add('hidden');
-        }
-    });
+    //     if (!event.target.closest('#account-info-icon')) {
+    //         accountInfo.classList.add('hidden');
+    //     }
+    // });
 
-    function toggleJobDrawer(id) {
-        const drawer = document.getElementById(`job-drawer-${id}`);
-        drawer.classList.toggle('translate-x-full');
-        drawer.classList.toggle('translate-x-0');
+    // function toggleJobDrawer(id) {
+    //     const drawer = document.getElementById(`job-drawer-${id}`);
+    //     drawer.classList.toggle('translate-x-full');
+    //     drawer.classList.toggle('translate-x-0');
         
-        // Prevent body scrolling when drawer is open
-        document.body.classList.toggle('overflow-hidden');
+    //     // Prevent body scrolling when drawer is open
+    //     document.body.classList.toggle('overflow-hidden');
 
-        // Add event listener for Escape key
-        if (!drawer.classList.contains('translate-x-full')) {
-            document.addEventListener('keydown', handleEscapeKey);
-        } else {
-            document.removeEventListener('keydown', handleEscapeKey);
-        }
-    }
+    //     // Add event listener for Escape key
+    //     if (!drawer.classList.contains('translate-x-full')) {
+    //         document.addEventListener('keydown', handleEscapeKey);
+    //     } else {
+    //         document.removeEventListener('keydown', handleEscapeKey);
+    //     }
+    // }
 
-    window.toggleAccordion = toggleAccordion;
-    window.toggleMenu = toggleMenu;
-    window.togglePopup = togglePopup;
-    window.toggleJobDrawer = toggleJobDrawer;
+    // window.toggleAccordion = toggleAccordion;
+    // window.toggleMenu = toggleMenu;
+    // window.togglePopup = togglePopup;
+    // window.toggleJobDrawer = toggleJobDrawer;
 
     function closeJobDrawer(id) {
         const drawer = document.getElementById(`job-drawer-${id}`);
