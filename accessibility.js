@@ -9,7 +9,7 @@ class Accessibility {
     this.initializeCardNavigation = this.initializeCardNavigation.bind(this);
   } 
 
-  initializeCardNavigation(cardSelector = '[id^="card-"]', drawerSelector = '[id^="drawer-"]') {
+  initializeCardNavigation(cardSelector = '[id^="card-"]') {
     // Select cards and convert to array
     const cards = Array.from(document.querySelectorAll(cardSelector));
 
