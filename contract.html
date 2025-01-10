@@ -6,43 +6,7 @@
     <title>Contracts - RemoteHQ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link data-n-head="ssr" type="font/woff2" rel="preload" href="https://www.upwork.com/static/fonts-global/4.5.1/neue-montreal-variable.woff2" as="font" crossorigin="anonymous">
-    <script src="theme.js" defer></script>
-    <script type="module">
-        import FilterDrawer from './filterDrawer.js';
-
-        // Optional: Custom filter application function
-        const applyContractFilters = (filters) => {
-            console.log('Applying contract filters:', filters);
-            
-            // Example: Filter contract cards based on status
-            const contractCards = document.querySelectorAll('.contract-card');
-            
-            contractCards.forEach(card => {
-                const status = card.getAttribute('data-status');
-                const isStatusMatch = filters.status.length === 0 || filters.status.includes(status);
-                
-                // Additional filter conditions
-                const rate = parseFloat(card.getAttribute('data-rate') || '0');
-                const isRateMatch = 
-                    (!filters.rateRange.min || rate >= parseFloat(filters.rateRange.min || '0')) &&
-                    (!filters.rateRange.max || rate <= parseFloat(filters.rateRange.max || '1000000'));
-                
-                // Show/hide card based on filters
-                card.style.display = (isStatusMatch && isRateMatch) ? 'block' : 'none';
-            });
-        };
-
-        // Initialize FilterDrawer with custom configuration
-        document.addEventListener('DOMContentLoaded', () => {
-            const contractFilterDrawer = FilterDrawer.create({
-                onApply: applyContractFilters,
-                drawerSelector: '#filter-drawer',
-                buttonSelector: '#filter-button',
-                applyButtonSelector: '#apply-filters-btn'
-            });
-        });
-    </script>
-</head>
+    </head>
 <body class="bg-white-100">
     <!-- Header -->
     <header class="bg-white sticky top-0 z-10 shadow-sm">
@@ -143,7 +107,7 @@
             <!-- Contracts Grid -->
             <div class="space-y-3">
                 <!-- Contract Card 1 -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
+                <div id="job-card-1" class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
                     <div class="p-4">
                         <!-- First Row: Contract Title and Three Dots -->
                         <div class="flex justify-between items-center mb-2">
@@ -183,7 +147,7 @@
                 </div>
 
                 <!-- Contract Card 2 -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
+                <div id="job-card-2" class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
                     <div class="p-4">
                         <!-- First Row: Contract Title and Three Dots -->
                         <div class="flex justify-between items-center mb-2">
@@ -222,8 +186,8 @@
                     </div>
                 </div>
 
-                <!-- Add more contract cards as needed -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
+               <!-- Contract Card 3 -->
+                <div id="job-card-3" class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <h2 class="text-lg font-semibold text-gray-800">Mobile App Design Project</h2>
@@ -256,7 +220,8 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
+                <!-- Contract Card 4 -->
+                <div id="job-card-4" class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <h2 class="text-lg font-semibold text-gray-800">E-commerce Backend Development</h2>
@@ -289,7 +254,8 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
+                <!-- Contract Card 5 -->
+                <div id="job-card-5" class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <h2 class="text-lg font-semibold text-gray-800">AI Chatbot Integration</h2>
@@ -322,7 +288,8 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
+                <!-- Contract Card 6 -->
+                <div id="job-card-6" class="bg-white rounded-lg shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors duration-200 ease-in-out">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
                             <h2 class="text-lg font-semibold text-gray-800">Cloud Infrastructure Setup</h2>
@@ -455,5 +422,63 @@
             </div>
         </div>
     </div>
+    <script type="module">
+        import Accessibility from "./accessibility.js";
+        import FilterDrawer from "./filterDrawer.js";
+        
+        const accessibility = new Accessibility();
+        
+        document.addEventListener('DOMContentLoaded', () => {
+          console.log('DOM Loaded');
+          
+          // Check for contract cards
+          const contractCards = document.querySelectorAll('[id^="job-card-"]');
+          if (contractCards.length > 0) {
+            console.log('Initializing Contract Card Navigation');
+            accessibility.initializeCardNavigation('[id^="job-card-"]', '[id^="job-drawer-"]');
+          }
+        });
+      
+        document.addEventListener('keydown', (event) => {
+          const contractCards = document.querySelectorAll('[id^="job-card-"]');
+          if (contractCards.length > 0) {
+            accessibility.handleCardKeyNavigation(event, '[id^="job-card-"]', '[id^="job-drawer-"]');
+          }
+        });
+
+        // Optional: Custom filter application function
+        const applyContractFilters = (filters) => {
+            console.log('Applying contract filters:', filters);
+            
+            // Example: Filter contract cards based on status
+            const contractCards = document.querySelectorAll('.contract-card');
+            
+            contractCards.forEach(card => {
+                const status = card.getAttribute('data-status');
+                const isStatusMatch = filters.status.length === 0 || filters.status.includes(status);
+                
+                // Additional filter conditions
+                const rate = parseFloat(card.getAttribute('data-rate') || '0');
+                const isRateMatch = 
+                    (!filters.rateRange.min || rate >= parseFloat(filters.rateRange.min || '0')) &&
+                    (!filters.rateRange.max || rate <= parseFloat(filters.rateRange.max || '1000000'));
+                
+                // Show/hide card based on filters
+                card.style.display = (isStatusMatch && isRateMatch) ? 'block' : 'none';
+            });
+        };
+
+        // Initialize FilterDrawer with custom configuration
+        document.addEventListener('DOMContentLoaded', () => {
+            const contractFilterDrawer = FilterDrawer.create({
+                onApply: applyContractFilters,
+                drawerSelector: '#filter-drawer',
+                buttonSelector: '#filter-button',
+                applyButtonSelector: '#apply-filters-btn'
+            });
+        });
+
+      </script>
+    <script src="theme.js" ></script>
 </body>
 </html>
