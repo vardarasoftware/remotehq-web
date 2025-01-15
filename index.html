@@ -477,6 +477,7 @@
     <script type="module">
         import Accessibility from "./accessibility.js";
         import FilterDrawer from './filterDrawer.js';
+        import Navigation from "./navigation.js";   
   
         const accessibility = new Accessibility();
 
@@ -530,6 +531,8 @@
             });
         });
 
+        const nav = new Navigation
+        nav.setupEventListeners();
     </script>
 </body>
 
