@@ -2,60 +2,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Minimalist Page</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link data-n-head="ssr" type="font/woff2" rel="preload"
-    href="https://www.upwork.com/static/fonts-global/4.5.1/neue-montreal-variable.woff2" as="font"
-    crossorigin="anonymous">
-  <script type="module">
-    import FilterDrawer from './filterDrawer.js';
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link data-n-head="ssr" type="font/woff2" rel="preload" href="https://www.upwork.com/static/fonts-global/4.5.1/neue-montreal-variable.woff2" as="font" crossorigin="anonymous">
 
-    // Optional: Custom filter application function
-    const applyContractFilters = (filters) => {
-      console.log('Applying contract filters:', filters);
-
-      // Example: Filter contract cards based on status
-      const contractCards = document.querySelectorAll('.contract-card');
-
-      contractCards.forEach(card => {
-        const status = card.getAttribute('data-status');
-        const isStatusMatch = filters.status.length === 0 || filters.status.includes(status);
-
-        // Additional filter conditions
-        const rate = parseFloat(card.getAttribute('data-rate') || '0');
-        const isRateMatch =
-          (!filters.rateRange.min || rate >= parseFloat(filters.rateRange.min || '0')) &&
-          (!filters.rateRange.max || rate <= parseFloat(filters.rateRange.max || '1000000'));
-
-        // Show/hide card based on filters
-        card.style.display = (isStatusMatch && isRateMatch) ? 'block' : 'none';
-      });
-    };
-
-    // Initialize FilterDrawer with custom configuration
-    document.addEventListener('DOMContentLoaded', () => {
-      const contractFilterDrawer = FilterDrawer.create({
-        onApply: applyContractFilters,
-        drawerSelector: '#filter-drawer',
-        buttonSelector: '#filter-button',
-        applyButtonSelector: '#apply-filters-btn'
-      });
-    });
-  </script>
-  <link data-n-head="ssr" type="font/woff2" rel="preload"
-    href="https://www.upwork.com/static/fonts-global/4.5.1/neue-montreal-variable.woff2" as="font"
-    crossorigin="anonymous" />
-
-  <!-- Link to external JavaScript file -->
-
-  <script type="module">
-    import Navigation from "./navigation.js";
-    const nav = new Navigation();
-    nav.setupEventListeners();
-
-  </script>
+    <!-- Link to external JavaScript file -->
 </head>
 
 <body class="bg-white-100">
@@ -517,8 +470,67 @@
         </div>
       </div>
     </div>
-  </div>
-  <script src="theme.js"></script>
+</div>
+</div>
+</div>
+    <script src="theme.js" ></script>
+    <script type="module">
+        import Accessibility from "./accessibility.js";
+        import FilterDrawer from './filterDrawer.js';
+  
+        const accessibility = new Accessibility();
+
+        document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOM Loaded');
+    
+        // Check for job cards
+        const jobCards = document.querySelectorAll('[id^="job-card-"]');
+        if (jobCards.length > 0) {
+        console.log('Initializing Job Card Navigation');
+        accessibility.initializeCardNavigation('[id^="job-card-"]', '[id^="job-drawer-"]');
+        }
+    });
+
+        document.addEventListener('keydown', (event) => {
+        const jobCards = document.querySelectorAll('[id^="job-card-"]');
+        if (jobCards.length > 0) {
+        accessibility.handleCardKeyNavigation(event, '[id^="job-card-"]', '[id^="job-drawer-"]');
+        }
+    });
+
+    // Optional: Custom filter application function
+    const applyContractFilters = (filters) => {
+        console.log('Applying contract filters:', filters);
+            
+        // Example: Filter contract cards based on status
+        const contractCards = document.querySelectorAll('.contract-card');
+            
+        contractCards.forEach(card => {
+            const status = card.getAttribute('data-status');
+            const isStatusMatch = filters.status.length === 0 || filters.status.includes(status);
+                
+            // Additional filter conditions
+            const rate = parseFloat(card.getAttribute('data-rate') || '0');
+            const isRateMatch = 
+                (!filters.rateRange.min || rate >= parseFloat(filters.rateRange.min || '0')) &&
+                (!filters.rateRange.max || rate <= parseFloat(filters.rateRange.max || '1000000'));
+                
+            // Show/hide card based on filters
+            card.style.display = (isStatusMatch && isRateMatch) ? 'block' : 'none';
+            });
+        };
+
+        // Initialize FilterDrawer with custom configuration
+        document.addEventListener('DOMContentLoaded', () => {
+            const contractFilterDrawer = FilterDrawer.create({
+                onApply: applyContractFilters,
+                drawerSelector: '#filter-drawer',
+                buttonSelector: '#filter-button',
+                applyButtonSelector: '#apply-filters-btn'
+            });
+        });
+
+    </script>
 </body>
 
 </html>

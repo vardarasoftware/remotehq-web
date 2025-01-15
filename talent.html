@@ -9,48 +9,9 @@
 
 
     <script type="module">
-        import FilterDrawer from './filterDrawer.js';
-
-        // Optional: Custom filter application function
-        const applyContractFilters = (filters) => {
-            console.log('Applying contract filters:', filters);
-            
-            // Example: Filter contract cards based on status
-            const contractCards = document.querySelectorAll('.contract-card');
-            
-            contractCards.forEach(card => {
-                const status = card.getAttribute('data-status');
-                const isStatusMatch = filters.status.length === 0 || filters.status.includes(status);
-                
-                // Additional filter conditions
-                const rate = parseFloat(card.getAttribute('data-rate') || '0');
-                const isRateMatch = 
-                    (!filters.rateRange.min || rate >= parseFloat(filters.rateRange.min || '0')) &&
-                    (!filters.rateRange.max || rate <= parseFloat(filters.rateRange.max || '1000000'));
-                
-                // Show/hide card based on filters
-                card.style.display = (isStatusMatch && isRateMatch) ? 'block' : 'none';
-            });
-        };
-
-        // Initialize FilterDrawer with custom configuration
-        document.addEventListener('DOMContentLoaded', () => {
-            const contractFilterDrawer = FilterDrawer.create({
-                onApply: applyContractFilters,
-                drawerSelector: '#filter-drawer',
-                buttonSelector: '#filter-button',
-                applyButtonSelector: '#apply-filters-btn'
-            });
-        });
-    </script>
-
-    <script type="module">
         import Navigation from "./navigation.js";
         const nav = new Navigation
-        nav.setupEventListeners();
-        
-       
-        
+        nav.setupEventListeners();   
       </script>
     
 </head>
@@ -657,5 +618,65 @@ class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end"
 </div>
 </div>
     <script src="theme.js"></script>
+    <script type="module">
+        import Accessibility from "./accessibility.js";
+        import FilterDrawer from './filterDrawer.js';
+  
+        const accessibility = new Accessibility();
+  
+        // Modify existing event listeners to support multiple page types
+        document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOM Loaded');
+        
+        // Check for talent cards
+        const talentCards = document.querySelectorAll('[id^="talent-card-"]');
+        if (talentCards.length > 0) {
+            console.log('Initializing Talent Card Navigation');
+            accessibility.initializeCardNavigation('[id^="talent-card-"]', '[id^="talent-drawer-"]');
+        }
+        });
+
+        document.addEventListener('keydown', (event) => {
+        const talentCards = document.querySelectorAll('[id^="talent-card-"]');
+
+        if (talentCards.length > 0) {
+            accessibility.handleCardKeyNavigation(event, '[id^="talent-card-"]', '[id^="talent-drawer-"]');
+        }
+        });
+
+        // Optional: Custom filter application function
+        const applyContractFilters = (filters) => {
+            console.log('Applying contract filters:', filters);
+            
+            // Example: Filter contract cards based on status
+            const contractCards = document.querySelectorAll('.contract-card');
+            
+            contractCards.forEach(card => {
+                const status = card.getAttribute('data-status');
+                const isStatusMatch = filters.status.length === 0 || filters.status.includes(status);
+                
+                // Additional filter conditions
+                const rate = parseFloat(card.getAttribute('data-rate') || '0');
+                const isRateMatch = 
+                    (!filters.rateRange.min || rate >= parseFloat(filters.rateRange.min || '0')) &&
+                    (!filters.rateRange.max || rate <= parseFloat(filters.rateRange.max || '1000000'));
+                
+                // Show/hide card based on filters
+                card.style.display = (isStatusMatch && isRateMatch) ? 'block' : 'none';
+            });
+        };
+
+        // Initialize FilterDrawer with custom configuration
+        document.addEventListener('DOMContentLoaded', () => {
+            const contractFilterDrawer = FilterDrawer.create({
+                onApply: applyContractFilters,
+                drawerSelector: '#filter-drawer',
+                buttonSelector: '#filter-button',
+                applyButtonSelector: '#apply-filters-btn'
+            });
+        });
+
+      </script>
+      <!---script src="theme.js"></script--->
 </body>
 </html>
