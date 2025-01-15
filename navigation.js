@@ -22,22 +22,6 @@ class Navigation {
     popup.classList.toggle("hidden");
   }
 
-  toggleJobDrawer(id) {
-    const drawer = document.getElementById(`job-drawer-${id}`);
-    drawer.classList.toggle("translate-x-full");
-    drawer.classList.toggle("translate-x-0");
-
-    // Prevent body scrolling when drawer is open
-    document.body.classList.toggle("overflow-hidden");
-
-    // Add event listener for Escape key
-    if (!drawer.classList.contains("translate-x-full")) {
-      document.addEventListener("keydown", handleEscapeKey);
-    } else {
-      document.removeEventListener("keydown", handleEscapeKey);
-    }
-  }
-
   setupEventListeners() {
     document.addEventListener("click", (event) => {
       const notifications = document.getElementById("popup-notifications");
@@ -55,7 +39,6 @@ class Navigation {
     window.toggleAccordion = this.toggleAccordion;
     window.toggleMenu = this.toggleMenu;
     window.togglePopup = this.togglePopup;
-    window.toggleJobDrawer = this.toggleJobDrawer;
   }
   
 }
