@@ -69,8 +69,8 @@ class ATSPage {
             
             if (!collapsed || !expanded) return;
 
-            collapsed.classList.toggle('hidden');
-            expanded.classList.toggle('hidden');
+            collapsed.classList.toggle('ats-hidden');
+            expanded.classList.toggle('ats-hidden');
             
             button.textContent = collapsed.classList.contains('hidden') ? 'See Less' : 'See More';
         } catch (error) {
@@ -126,11 +126,14 @@ class ATSPage {
                 });
             });
 
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.popup-content')) {
-                    this.closeAllPopups();
+            document.addEventListener('click', (event) => {
+                if (!event.target.closest('.popup-content') && !event.target.closest('#notifications-icon')) {
+                    document.querySelectorAll('[data-popup]').forEach(popup => popup.classList.add('hidden'));
+                    const notifications = document.getElementById('popup-notifications');
+                    notifications.classList.add('hidden');
                 }
             });
+            
         } catch (error) {
             console.error('Error initializing popups:', error);
         }
@@ -191,7 +194,7 @@ class ATSPage {
      */
     toggleMobileMenu() {
         try {
-            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenu = document.getElementById('mobile-menu-ats');
             if (mobileMenu) {
                 mobileMenu.classList.toggle('hidden');
             }
@@ -200,10 +203,10 @@ class ATSPage {
         }
     }
 }
-
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new ATSPage();
 });
+
 
 export default ATSPage; 
