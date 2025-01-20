@@ -6,12 +6,7 @@
     <title>Contracts - RemoteHQ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link data-n-head="ssr" type="font/woff2" rel="preload" href="https://www.upwork.com/static/fonts-global/4.5.1/neue-montreal-variable.woff2" as="font" crossorigin="anonymous">
-    <script type="module">
-        import Navigation from "./navigation.js";
-        const nav = new Navigation
-        nav.setupEventListeners();
-      </script>
-    </head>
+</head>
 <body class="bg-white-100">
     <!-- Header -->
     <header class="bg-white sticky top-0 z-10 shadow-sm">
@@ -429,6 +424,7 @@
     <script type="module">
         import Accessibility from "./accessibility.js";
         import FilterDrawer from "./filterDrawer.js";
+        import Navigation from "./navigation.js";
         
         const accessibility = new Accessibility();
         
@@ -482,7 +478,8 @@
             });
         });
 
+        const nav = new Navigation
+        nav.setupEventListeners();
       </script>
-    <script src="theme.js" ></script>
 </body>
 </html>

@@ -94,7 +94,7 @@
     <nav id="mobile-menu" class="hidden md:hidden bg-gray-100 py-2">
       <a href="./talent.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">Find Talent</a>
       <a href="./jobs.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">Jobs</a>
-      <a href="#" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">Contracts</a>
+      <a href="./contract.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">Contracts</a>
     </nav>
   </header>
 
@@ -482,6 +482,7 @@
     <script type="module">
         import Accessibility from "./accessibility.js";
         import FilterDrawer from './filterDrawer.js';
+        import Navigation from "./navigation.js";   
   
         const accessibility = new Accessibility();
 
@@ -535,6 +536,8 @@
             });
         });
 
+        const nav = new Navigation
+        nav.setupEventListeners();
     </script>
 </body>
 

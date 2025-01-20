@@ -9,6 +9,7 @@
     
     <script type="module">
         import FilterDrawer from './filterDrawer.js';
+        import Navigation from "./navigation.js";
 
         // Optional: Custom filter application function
         const applyContractFilters = (filters) => {
@@ -41,13 +42,10 @@
                 applyButtonSelector: '#apply-filters-btn'
             });
         });
-    </script>
 
-    <script type="module">
-        import Navigation from "./navigation.js";
         const nav = new Navigation
         nav.setupEventListeners();
-      </script>
+    </script>
 
     <style>
         .job-row {
@@ -622,8 +620,5 @@
             </div>
         </div>
     </div>
-
-
-    <script src="theme.js"></script>
 </body>
 </html>
