@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATS - RemoteHQ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link data-n-head="ssr" type="font/woff2" rel="preload" href="https://www.upwork.com/static/fonts-global/4.5.1/neue-montreal-variable.woff2" as="font" crossorigin="anonymous">
+    <link data-n-head="ssr" type="font/woff2" rel="preload"
+        href="https://www.upwork.com/static/fonts-global/4.5.1/neue-montreal-variable.woff2" as="font"
+        crossorigin="anonymous">
     <style>
         .tab-active {
             font-weight: bold;
@@ -19,63 +22,85 @@
 
         /* Hide scrollbar for IE, Edge and Firefox */
         .overflow-x-auto {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
         }
     </style>
 </head>
+
 <body class="bg-white">
     <!-- Header -->
     <header class="bg-white sticky top-0 z-10 shadow-sm">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center">
                 <!-- Mobile Menu Icon -->
-                <button class="md:hidden p-2 text-gray-600 focus:outline-none" aria-label="Open Menu" data-mobile-menu>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                <button class="md:hidden p-2 text-gray-600 focus:outline-none" aria-label="Open Menu" data-mobile-menu-ats>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
                 </button>
                 <!-- Logo -->
-                <div class="text-xl font-bold text-gray-700"><a href="./index.html">RemoteHQ</a></div>
+                <div class="text-xl font-bold text-gray-700">
+                    <a href="./index.html">RemoteHQ</a>
+                </div>
                 <!-- Menu Options (Desktop) -->
                 <nav class="hidden md:flex space-x-4 ml-6">
-                    <a href="#" class="text-gray-600 hover:text-gray-800 focus:outline focus:outline-gray-300">Find Talent</a>
-                    <a href="./jobs.html" class="text-gray-600 hover:text-gray-800 focus:outline focus:outline-gray-300">Jobs</a>
-                    <a href="./contract.html" class="text-gray-600 hover:text-gray-800 focus:outline focus:outline-gray-300">Contracts</a>
+                    <a href="./talent.html"
+                        class="text-gray-600 hover:text-gray-800 focus:outline focus:outline-gray-300">Find
+                        Talent</a>
+                    <a href="./jobs.html"
+                        class="text-gray-600 hover:text-gray-800 focus:outline focus:outline-gray-300">Jobs</a>
+                    <a href="./contract.html"
+                        class="text-gray-600 hover:text-gray-800 focus:outline focus:outline-gray-300">Contracts</a>
                 </nav>
             </div>
             <!-- Notifications and Account Info -->
             <div class="flex items-center space-x-4">
                 <!--Ai assistant chat-->
                 <div class="relative">
-                    <button class="p-2 rounded-full focus:outline focus:outline-gray-400" aria-label="Notifications" title="conversations">
+                    <button class="p-2 rounded-full focus:outline focus:outline-gray-400" aria-label="Notifications"
+                        title="conversations">
                         <a href="./ai_chat.html" class="relative">
                             <svg class="w-6 h-6 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8-1.174 0-2.3-.183-3.358-.524L3 20l1.424-4.272C3.526 14.335 3 12.73 3 11c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8-1.174 0-2.3-.183-3.358-.524L3 20l1.424-4.272C3.526 14.335 3 12.73 3 11c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                             </svg>
-                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
+                            <span
+                                class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
                         </a>
                     </button>
                 </div>
                 <!-- Notifications -->
                 <div class="relative" id="notifications-icon">
-                    <button class="p-2 rounded-full focus:outline focus:outline-gray-400" aria-label="Notifications" title="Notifications" data-popup="notifications">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-gray-600">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0a3 3 0 11-6 0m6 0H9" />
+                    <button class="p-2 rounded-full focus:outline focus:outline-gray-400" aria-label="Notifications"
+                        title="Notifications" onclick="togglePopup('notifications')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="h-6 w-6 text-gray-600">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0a3 3 0 11-6 0m6 0H9" />
                         </svg>
                     </button>
-                    <div id="popup-notifications" class="hidden absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg p-4">
+                    <div id="popup-notifications"
+                        class="hidden absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg p-4">
                         <p class="text-sm text-gray-600">No new notifications.</p>
                     </div>
                 </div>
                 <!-- Account Info -->
                 <div class="relative" id="account-info-icon">
-                    <button class="p-2 rounded-full focus:outline focus:outline-gray-400" aria-label="Account Info" title="Account Info" onclick="togglePopup('account-info')">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-gray-600">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-10 1.67-10 5v2h20v-2c0-3.33-6.69-5-10-5z" />
+                    <button class="p-2 rounded-full focus:outline focus:outline-gray-400" aria-label="Account Info"
+                        title="Account Info" onclick="togglePopup('account-info')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="h-6 w-6 text-gray-600">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-10 1.67-10 5v2h20v-2c0-3.33-6.69-5-10-5z" />
                         </svg>
                     </button>
-                    <div id="popup-account-info" class="hidden absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg p-4">
+                    <div id="popup-account-info"
+                        class="hidden absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg p-4">
                         <p class="text-sm text-gray-600">Logged in as John Doe.</p>
                         <a href="#" class="text-blue-500 hover:underline text-sm">Profile</a>
                         <br>
@@ -86,9 +111,8 @@
         </div>
         <!-- Mobile Menu -->
         <nav id="mobile-menu" class="hidden md:hidden bg-gray-100 py-2">
-            <a href="#" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">Find Talent</a>
+            <a href="./talent.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">Find Talent</a>
             <a href="./jobs.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">Jobs</a>
-            <a href="./my-jobs.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">My Jobs</a>
             <a href="#" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">Contracts</a>
         </nav>
     </header>
@@ -98,7 +122,8 @@
         <!-- Hero Job Section -->
         <div class="bg-white p-6 rounded-lg shadow-md mb-6">
             <h1 class="text-2xl font-bold mb-2">Job Title: Frontend Developer</h1>
-            <p class="text-gray-700">We are looking for a skilled frontend developer to join our team. The ideal candidate will have experience with React and Tailwind CSS.</p>
+            <p class="text-gray-700">We are looking for a skilled frontend developer to join our team. The ideal
+                candidate will have experience with React and Tailwind CSS.</p>
         </div>
 
         <!-- Tabs Bar - Updated for mobile responsiveness -->
@@ -107,16 +132,20 @@
                 <span class="cursor-pointer py-2 text-sm md:text-base tab-active whitespace-nowrap">
                     All (8)
                 </span>
-                <span class="cursor-pointer py-2 text-sm md:text-base text-gray-600 hover:text-gray-900 whitespace-nowrap">
+                <span
+                    class="cursor-pointer py-2 text-sm md:text-base text-gray-600 hover:text-gray-900 whitespace-nowrap">
                     Invited (3)
                 </span>
-                <span class="cursor-pointer py-2 text-sm md:text-base text-gray-600 hover:text-gray-900 whitespace-nowrap">
+                <span
+                    class="cursor-pointer py-2 text-sm md:text-base text-gray-600 hover:text-gray-900 whitespace-nowrap">
                     Shortlisted (2)
                 </span>
-                <span class="cursor-pointer py-2 text-sm md:text-base text-gray-600 hover:text-gray-900 whitespace-nowrap">
+                <span
+                    class="cursor-pointer py-2 text-sm md:text-base text-gray-600 hover:text-gray-900 whitespace-nowrap">
                     Hired (1)
                 </span>
-                <span class="cursor-pointer py-2 text-sm md:text-base text-gray-600 hover:text-gray-900 whitespace-nowrap">
+                <span
+                    class="cursor-pointer py-2 text-sm md:text-base text-gray-600 hover:text-gray-900 whitespace-nowrap">
                     Archived (0)
                 </span>
             </div>
@@ -124,26 +153,33 @@
 
         <!-- Search Bar with Funnel Filter Icon -->
         <div class="flex items-center mb-6">
-            <input type="text" placeholder="Search applicants..." class="flex-1 border border-gray-300 rounded-lg px-4 py-2">
-            <button class="ml-2 p-2 text-gray-600 hover:text-gray-900">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+            <input type="text" placeholder="Search applicants..."
+                class="flex-1 border border-gray-300 rounded-lg px-4 py-2">
+            <button id="filter-button" class="p-2 rounded-full" aria-label="Filters"
+                onclick="toggleDrawer('filter-drawer')">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    class="h-6 w-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
                 </svg>
             </button>
+
         </div>
 
         <!-- User Cards -->
         <div class="space-y-4">
             <!-- User Card 1 -->
-            <div class="bg-white p-6 rounded-lg shadow-md relative">
+            <div id="ats-card-1" class="bg-white p-6 rounded-lg shadow-md relative">
                 <!-- Hire Button - Desktop -->
-                <button class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                <button
+                    class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
                     Hire
                 </button>
 
                 <!-- User Info Section -->
-                <div class="flex items-start gap-4">
-                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Riley" alt="Riley" class="w-16 h-16 rounded-full flex-shrink-0">
+                <div id="ats-info-1" class="flex items-start gap-4">
+                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Riley" alt="Riley"
+                        class="w-16 h-16 rounded-full flex-shrink-0">
                     <div class="flex-grow">
                         <h2 class="text-lg font-bold">Riley Anderson</h2>
                         <p class="text-md text-gray-700">Senior Frontend Developer</p>
@@ -159,17 +195,20 @@
                 <div class="mt-4">
                     <p class="text-gray-700 md:line-clamp-3 proposal-text">
                         <span class="collapsed">
-                            Senior Frontend Developer with 7+ years of experience in React ecosystem. Specialized in building scalable web applications.
+                            Senior Frontend Developer with 7+ years of experience in React ecosystem. Specialized in
+                            building scalable web applications.
                         </span>
                         <span class="expanded hidden">
-                            Senior Frontend Developer with 7+ years of experience in React ecosystem. Specialized in building scalable web applications.
+                            Senior Frontend Developer with 7+ years of experience in React ecosystem. Specialized in
+                            building scalable web applications.
                             Key achievements:
                             - Led frontend development for 3 major SaaS products
                             - Improved application performance by 40%
                             - Implemented modern CI/CD practices
                         </span>
                     </p>
-                    <button data-proposal-toggle class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
+                    <button data-proposal-toggle
+                        class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
                         See More
                     </button>
                 </div>
@@ -183,19 +222,22 @@
                 </div>
 
                 <!-- Hire Button - Mobile -->
-                <button class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                <button
+                    class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
                     Hire
                 </button>
             </div>
 
             <!-- User Card 2 (Leah - UI/UX) -->
-            <div class="bg-white p-6 rounded-lg shadow-md relative">
-                <button class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+            <div id="ats-card-2" class="bg-white p-6 rounded-lg shadow-md relative">
+                <button
+                    class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
                     Hire
                 </button>
 
                 <div class="flex items-start gap-4">
-                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Leah" alt="Leah" class="w-16 h-16 rounded-full flex-shrink-0">
+                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Leah" alt="Leah"
+                        class="w-16 h-16 rounded-full flex-shrink-0">
                     <div class="flex-grow">
                         <h2 class="text-lg font-bold">Leah Mitchell</h2>
                         <p class="text-md text-gray-700">UI/UX Designer</p>
@@ -210,17 +252,20 @@
                 <div class="mt-4">
                     <p class="text-gray-700 md:line-clamp-3 proposal-text">
                         <span class="collapsed">
-                            Creative UI/UX Designer with a passion for crafting intuitive and engaging user experiences. Strong background in user research and prototyping.
+                            Creative UI/UX Designer with a passion for crafting intuitive and engaging user experiences.
+                            Strong background in user research and prototyping.
                         </span>
                         <span class="expanded hidden">
-                            Creative UI/UX Designer with a passion for crafting intuitive and engaging user experiences. Strong background in user research and prototyping.
+                            Creative UI/UX Designer with a passion for crafting intuitive and engaging user experiences.
+                            Strong background in user research and prototyping.
                             Recent achievements:
                             - Redesigned e-commerce platform increasing conversion by 35%
                             - Led design system implementation for major fintech app
                             - Conducted user research resulting in 40% better engagement
                         </span>
                     </p>
-                    <button data-proposal-toggle class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
+                    <button data-proposal-toggle
+                        class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
                         See More
                     </button>
                 </div>
@@ -232,19 +277,22 @@
                     <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Design Systems</span>
                 </div>
 
-                <button class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                <button
+                    class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
                     Hire
                 </button>
             </div>
 
             <!-- User Card 3 (Sarah - Backend Developer) -->
-            <div class="bg-white p-6 rounded-lg shadow-md relative">
-                <button class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+            <div id="ats-card-3" class="bg-white p-6 rounded-lg shadow-md relative">
+                <button
+                    class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
                     Hire
                 </button>
 
                 <div class="flex items-start gap-4">
-                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Sarah" alt="Sarah" class="w-16 h-16 rounded-full flex-shrink-0">
+                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Sarah" alt="Sarah"
+                        class="w-16 h-16 rounded-full flex-shrink-0">
                     <div class="flex-grow">
                         <h2 class="text-lg font-bold">Sarah Chen</h2>
                         <p class="text-md text-gray-700">Backend Developer</p>
@@ -259,17 +307,20 @@
                 <div class="mt-4">
                     <p class="text-gray-700 md:line-clamp-3 proposal-text">
                         <span class="collapsed">
-                            Backend Developer specializing in scalable microservices and cloud architecture. Expert in building high-performance APIs and distributed systems.
+                            Backend Developer specializing in scalable microservices and cloud architecture. Expert in
+                            building high-performance APIs and distributed systems.
                         </span>
                         <span class="expanded hidden">
-                            Backend Developer specializing in scalable microservices and cloud architecture. Expert in building high-performance APIs and distributed systems.
+                            Backend Developer specializing in scalable microservices and cloud architecture. Expert in
+                            building high-performance APIs and distributed systems.
                             Key highlights:
                             - Architected microservices handling 1M+ daily requests
                             - Reduced server costs by 45% through optimization
                             - Implemented automated CI/CD pipelines for 20+ services
                         </span>
                     </p>
-                    <button data-proposal-toggle class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
+                    <button data-proposal-toggle
+                        class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
                         See More
                     </button>
                 </div>
@@ -281,19 +332,22 @@
                     <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">MongoDB</span>
                 </div>
 
-                <button class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                <button
+                    class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
                     Hire
                 </button>
             </div>
 
             <!-- User Card 4 (Sophia - Full Stack Developer) -->
-            <div class="bg-white p-6 rounded-lg shadow-md relative">
-                <button class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+            <div id="ats-card-4" class="bg-white p-6 rounded-lg shadow-md relative">
+                <button
+                    class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
                     Hire
                 </button>
 
                 <div class="flex items-start gap-4">
-                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Sophia" alt="Sophia" class="w-16 h-16 rounded-full flex-shrink-0">
+                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Sophia" alt="Sophia"
+                        class="w-16 h-16 rounded-full flex-shrink-0">
                     <div class="flex-grow">
                         <h2 class="text-lg font-bold">Sophia Rodriguez</h2>
                         <p class="text-md text-gray-700">Full Stack Developer</p>
@@ -308,17 +362,20 @@
                 <div class="mt-4">
                     <p class="text-gray-700 md:line-clamp-3 proposal-text">
                         <span class="collapsed">
-                            Versatile Full Stack Developer with expertise in modern web technologies. Experienced in building complete web applications from concept to deployment.
+                            Versatile Full Stack Developer with expertise in modern web technologies. Experienced in
+                            building complete web applications from concept to deployment.
                         </span>
                         <span class="expanded hidden">
-                            Versatile Full Stack Developer with expertise in modern web technologies. Experienced in building complete web applications from concept to deployment.
+                            Versatile Full Stack Developer with expertise in modern web technologies. Experienced in
+                            building complete web applications from concept to deployment.
                             Recent projects:
                             - Built and launched an e-learning platform with 50k+ users
                             - Developed real-time collaboration tools using WebSocket
                             - Created mobile-first responsive applications
                         </span>
                     </p>
-                    <button data-proposal-toggle class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
+                    <button data-proposal-toggle
+                        class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
                         See More
                     </button>
                 </div>
@@ -330,19 +387,22 @@
                     <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Docker</span>
                 </div>
 
-                <button class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                <button
+                    class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
                     Hire
                 </button>
             </div>
 
             <!-- User Card 5 (Emery - DevOps Engineer) -->
-            <div class="bg-white p-6 rounded-lg shadow-md relative">
-                <button class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+            <div id="ats-card-5" class="bg-white p-6 rounded-lg shadow-md relative">
+                <button
+                    class="hidden md:block absolute top-4 right-4 bg-blue-500 text-white px-6 py-2 rounded text-base font-medium hover:bg-blue-600 transition-colors">
                     Hire
                 </button>
 
                 <div class="flex items-start gap-4">
-                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Emery" alt="Emery" class="w-16 h-16 rounded-full flex-shrink-0">
+                    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Emery" alt="Emery"
+                        class="w-16 h-16 rounded-full flex-shrink-0">
                     <div class="flex-grow">
                         <h2 class="text-lg font-bold">Emery Taylor</h2>
                         <p class="text-md text-gray-700">DevOps Engineer</p>
@@ -357,17 +417,20 @@
                 <div class="mt-4">
                     <p class="text-gray-700 md:line-clamp-3 proposal-text">
                         <span class="collapsed">
-                            DevOps Engineer focused on automation and infrastructure optimization. Expert in cloud services and containerization technologies.
+                            DevOps Engineer focused on automation and infrastructure optimization. Expert in cloud
+                            services and containerization technologies.
                         </span>
                         <span class="expanded hidden">
-                            DevOps Engineer focused on automation and infrastructure optimization. Expert in cloud services and containerization technologies.
+                            DevOps Engineer focused on automation and infrastructure optimization. Expert in cloud
+                            services and containerization technologies.
                             Major achievements:
                             - Reduced deployment time by 70% using automated pipelines
                             - Implemented zero-downtime deployment strategy
                             - Set up multi-region infrastructure for global applications
                         </span>
                     </p>
-                    <button data-proposal-toggle class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
+                    <button data-proposal-toggle
+                        class="md:hidden text-blue-500 text-sm font-medium mt-2 hover:text-blue-600">
                         See More
                     </button>
                 </div>
@@ -379,13 +442,149 @@
                     <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">CI/CD</span>
                 </div>
 
-                <button class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
+                <button
+                    class="md:hidden w-full mt-4 bg-blue-500 text-white py-3 rounded text-base font-medium hover:bg-blue-600 transition-colors">
                     Hire
                 </button>
             </div>
         </div>
     </div>
+    <div id="filter-drawer" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
+        <div class="w-full md:w-96 bg-white h-full shadow-lg p-6 overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">Filter Contracts</h2>
+                <button id="apply-filters-btn" class="text-gray-600 hover:bg-gray-100 p-2 rounded">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
 
-    <script type="module" src="ats.js"></script>
+            <!-- Filter Options -->
+            <div class="space-y-4">
+                <!-- Contract Status -->
+                <div>
+                    <h3 class="text-md font-semibold mb-2">Contract Status</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600 mr-2">
+                            <span>Active</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600 mr-2">
+                            <span>Pending</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600 mr-2">
+                            <span>Completed</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Date Range -->
+                <div>
+                    <h3 class="text-md font-semibold mb-2">Date Range</h3>
+                    <div class="space-y-2">
+                        <div>
+                            <label class="block text-sm mb-1">Start Date</label>
+                            <input type="date" class="w-full border border-gray-300 rounded-md px-3 py-2">
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-1">End Date</label>
+                            <input type="date" class="w-full border border-gray-300 rounded-md px-3 py-2">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rate Range -->
+                <div>
+                    <h3 class="text-md font-semibold mb-2">Rate Range</h3>
+                    <div class="flex space-x-2">
+                        <input type="number" placeholder="Min"
+                            class="w-full border border-gray-300 rounded-md px-3 py-2">
+                        <input type="number" placeholder="Max"
+                            class="w-full border border-gray-300 rounded-md px-3 py-2">
+                    </div>
+                </div>
+
+                <!-- Apply Filters Button -->
+                <div class="mt-6">
+                    <button id="apply-filters-btn"
+                        class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition">
+                        Apply Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script type="module">
+            import Navigation from "./navigation.js";
+            import Accessibility from "./accessibility.js";
+            import FilterDrawer from './filterDrawer.js';
+
+            const nav = new Navigation
+            nav.setupEventListeners();
+            console.log("Navigation script loaded");
+
+            const accessibility = new Accessibility();
+
+            // Modify existing event listeners to support multiple page types
+            document.addEventListener('DOMContentLoaded', () => {
+                console.log('DOM Loaded');
+
+                // Check for talent cards
+                const talentCards = document.querySelectorAll('[id^="ats-card-"]');
+                if (talentCards.length > 0) {
+                    console.log('Initializing ats Card Navigation');
+                    accessibility.initializeCardNavigation('[id^="ats-card-"]', '[id^="ats-info-"]');
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                const talentCards = document.querySelectorAll('[id^="ats-card-"]');
+
+                if (talentCards.length > 0) {
+                    accessibility.handleCardKeyNavigation(event, '[id^="ats-card-"]', '[id^="ats-info-"]');
+                }
+            });
+
+            // Optional: Custom filter application function
+            const applyContractFilters = (filters) => {
+                console.log('Applying contract filters:', filters);
+
+                // Example: Filter contract cards based on status
+                const contractCards = document.querySelectorAll('.contract-card');
+
+                contractCards.forEach(card => {
+                    const status = card.getAttribute('data-status');
+                    const isStatusMatch = filters.status.length === 0 || filters.status.includes(status);
+
+                    // Additional filter conditions
+                    const rate = parseFloat(card.getAttribute('data-rate') || '0');
+                    const isRateMatch =
+                        (!filters.rateRange.min || rate >= parseFloat(filters.rateRange.min || '0')) &&
+                        (!filters.rateRange.max || rate <= parseFloat(filters.rateRange.max || '1000000'));
+
+                    // Show/hide card based on filters
+                    card.style.display = (isStatusMatch && isRateMatch) ? 'block' : 'none';
+                });
+            };
+
+            // Initialize FilterDrawer with custom configuration
+            document.addEventListener('DOMContentLoaded', () => {
+                const contractFilterDrawer = FilterDrawer.create({
+                    onApply: applyContractFilters,
+                    drawerSelector: '#filter-drawer',
+                    buttonSelector: '#filter-button',
+                    applyButtonSelector: '#apply-filters-btn'
+                });
+            });
+
+        </script>
+        <script type="module" src="ats.js"></script>   
+
 </body>
+
 </html>

@@ -9,6 +9,12 @@
     <link data-n-head="ssr" type="font/woff2" rel="preload" href="https://www.upwork.com/static/fonts-global/4.5.1/neue-montreal-variable.woff2" as="font" crossorigin="anonymous">
 
     <!-- Link to external JavaScript file -->
+    <script type="module">
+      import Navigation from "./navigation.js";
+      const nav = new Navigation
+      nav.setupEventListeners();   
+    </script>
+     
 </head>
 
 <body class="bg-white-100">
@@ -88,7 +94,6 @@
     <nav id="mobile-menu" class="hidden md:hidden bg-gray-100 py-2">
       <a href="./talent.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">Find Talent</a>
       <a href="./jobs.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">Jobs</a>
-      <a href="./my-jobs.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">My Jobs</a>
       <a href="./contract.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">Contracts</a>
     </nav>
   </header>
